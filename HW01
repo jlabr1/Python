@@ -1,0 +1,66 @@
+import random
+
+def intro():
+
+    print('Hi, what is your name?')
+    username = input()
+
+    print('Hello '+username +'! ' + 'Let\'s play a game!\n')
+
+    #return username
+
+
+def guess_check():  #Begin guessing game
+    
+    low = 1
+    high = 100
+    number = random.randint(low,high)
+    tries = 1
+
+    print('Think of a random number from 1 to 100, and ' +
+          'I\'ll try to guess it!')
+
+    print('Is it',number,'?' '(yes/no)')    #random number generated
+
+    guess = input()     
+
+    while guess != 'yes':       #runs loop until guessed number is true
+        print('Is the number larger than',number,'?' +'(yes/no)')
+        guess = input()     #response to if number is larger
+
+        if guess == 'yes':
+            low = number
+            number = random.randint(low,high)
+            print('Is it',number,'?')
+            guess = input()
+            tries = tries + 1
+        elif guess == 'no':
+            high = number
+            number = random.randint(low,high)
+            print('Is it',number,'?')
+            guess = input()
+            tries = tries + 1
+
+    if guess == 'yes':
+        print('Yeey! I got it in',tries, 'tries!')
+
+intro()
+
+def play_again():       #return to play game again
+    while True:
+        replay = input('Do you want to play again?' +'(yes/no)')
+        if replay == 'yes':
+            print('OK! Let\'s play again!')
+            return True
+        elif replay =='no':
+            print('OK! Bye-Bye!')
+            return False
+
+def main():
+    while True:
+        guess_check()
+        if not play_again():
+            return
+
+if __name__ == '__main__':
+    main()
