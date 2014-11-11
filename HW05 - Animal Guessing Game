@@ -1,0 +1,57 @@
+def intro ():
+
+    print('Hi, what is your name?') 
+    username = input()
+
+    print('Hello '+username +'! ' + 'Let\'s play a game!\n')    #retrive username
+    print('Try to guess the animal!')  
+    print('I will give you 3 tries, guess what animal I am!\n')
+
+class Animal:
+    animaltype = ''
+    animalname = ''
+
+    def __init__(self, animal):         #dictionary list of animal description
+
+
+            zooanimals = {'elephant': ['I have exceptional memory',
+                                   'I am the largest land-living mammal in the world',
+                                   'I have tusks'],
+                          'tiger': ['I am the biggest cat',
+                                    'I come in black and white or orange and black colors',
+                                    'I can be seen at the zoo'],
+                          'bat' : ['I use echo-location sensing',
+                                   'I can fly',
+                                   'I see well in the dark']}
+
+            self.animaltype=zooanimals[animal]
+            self.animalname=animal
+            
+    def guess_who_am_i(self):
+                                        #starting at 0 going to 2 (3 counts)
+        count = 0
+        
+        while (count < 3):
+             print(self.animaltype[count])      #while count is < 3, repeats until all questions have cycled
+             getinput = input("Who am I?")
+             if(getinput == self.animalname):
+                 print('You got it! I am a',  self.animalname)      #breaks to next if questions answer is true
+                 break
+             elif(count <= 1):
+                 print('Nope, try again!')   
+                 count += 1
+             else:
+                 print('Nice try, the answer is:', self.animalname +'\n')   #gives correct answer after 3 tries
+                 break
+
+                   
+e = Animal('elephant')
+t = Animal('tiger')
+b = Animal('bat')
+
+intro()
+
+
+e.guess_who_am_i()
+t.guess_who_am_i()
+b.guess_who_am_i()
