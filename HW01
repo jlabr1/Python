@@ -18,7 +18,7 @@ def guess_check():  #Begin guessing game
     tries = 1
 
     print('Think of a random number from 1 to 100, and ' +
-          'I\'ll try to guess it!')
+          'I\'ll try to guess it!\n')
 
     print('Is it',number,'?' '(yes/no)')    #random number generated
 
